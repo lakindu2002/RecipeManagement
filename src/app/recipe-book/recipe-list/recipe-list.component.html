@@ -5,16 +5,5 @@
 </div>
 <hr>
 <div class="row" *ngFor="let recipe of recipeList">
-  <div class="col-md-12 custom">
-    <a href="#" class="list-group-item clearfix" style="background-color: lightyellow;">
-      <div class="float-left">
-        <h4 class="list-group-item-heading">{{recipe.getRecipeName()}}</h4>
-        <p class="list-group-item-text">{{recipe.getRecipeDescription()}}</p>
-      </div>
-      <span class="float-right">
-        <img [src]="recipe.getImagePath()" alt="image" class="img-responsive maxwidth">
-      </span>
-    </a>
-  </div>
+  <app-recipe-item [theRecipeInformation]="recipe" (recipeObject)="retrievedToRecipeList($event)"></app-recipe-item>
 </div>
-<app-recipe-item></app-recipe-item>

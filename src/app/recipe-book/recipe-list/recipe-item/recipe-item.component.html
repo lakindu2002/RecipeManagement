@@ -1,1 +1,11 @@
-<p>recipe-item works!</p>
+<div class="col-md-12 custom" (click)="showInDetail()">
+  <a href="#" class="list-group-item clearfix" style="background-color: lightyellow;">
+    <div class="float-left">
+      <h4 class="list-group-item-heading">{{theRecipe.getRecipeName()}}</h4>
+      <p class="list-group-item-text">{{theRecipe.getRecipeDescription()}}</p>
+    </div>
+    <span class="float-right">
+      <img [src]="theRecipe.getImagePath()" alt="image" width="30%" style="margin-left: 160px;" class="img-responsive maxwidth">
+    </span>
+  </a>
+</div>
