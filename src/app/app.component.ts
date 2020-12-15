@@ -12,12 +12,17 @@ export class AppComponent {
   showShoppingList: boolean = false;
 
   showComponent(componentName: string) {
-    if (componentName === "RecipeComponent") {
-      this.showRecipeList = true;
-      this.showShoppingList = false;
-    } else if (componentName === "ShoppingListComponent") {
-      this.showShoppingList = true;
-      this.showRecipeList = false;
+    switch (componentName) {
+      case "RecipeComponent": {
+        this.showRecipeList = true;
+        this.showShoppingList = false;
+        break;
+      }
+      case "ShoppingListComponent": {
+        this.showShoppingList = true;
+        this.showRecipeList = false;
+        break;
+      }
     }
   }
 }
