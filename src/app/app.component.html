@@ -1,10 +1,10 @@
 <div class="custom">
-  <app-header-component></app-header-component>
+  <app-header-component (loadComponent)="showComponent($event)"></app-header-component>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <app-recipe-book></app-recipe-book>
-        <app-shopping-list></app-shopping-list>
+        <app-recipe-book *ngIf="showRecipeList===true"></app-recipe-book>
+        <app-shopping-list *ngIf="showShoppingList===true"></app-shopping-list>
       </div>
     </div>
   </div>

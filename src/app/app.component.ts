@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CourseProject';
+
+  showRecipeList: boolean = false;
+  showShoppingList: boolean = false;
+
+  showComponent(componentName: string) {
+    if (componentName === "RecipeComponent") {
+      this.showRecipeList = true;
+      this.showShoppingList = false;
+    } else if (componentName === "ShoppingListComponent") {
+      this.showShoppingList = true;
+      this.showRecipeList = false;
+    }
+  }
 }
