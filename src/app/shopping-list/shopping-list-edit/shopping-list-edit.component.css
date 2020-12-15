@@ -1,0 +1,10 @@
+.btn-format{
+  border-radius: 5px;
+  margin-right: 5px;
+  width: 100%;
+}
+.add-border{
+  border: 0.5px solid lightcoral;
+  border-radius: 5px;
+  padding: 10px;
+}
