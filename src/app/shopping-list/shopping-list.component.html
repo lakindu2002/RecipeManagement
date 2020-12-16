@@ -2,7 +2,7 @@
   <br>
   <div class="row">
     <div class="col-md-10">
-      <app-shopping-list-edit></app-shopping-list-edit>
+      <app-shopping-list-edit (ingredientObj)="recievedAddIngredientClick($event)"></app-shopping-list-edit>
       <hr>
       <ul class="list-group">
         <a class="list-group-item custom-pointer" *ngFor="let ingredient of ingredients">{{ingredient.getName()}} ({{ingredient.getAmount()}})</a>

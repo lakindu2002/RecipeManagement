@@ -5,16 +5,18 @@
       <div class="row">
         <div class="form-group col-sm-8">
           <label for="ingredientName">Ingredient Name</label>
-          <input type="text" for="ingredientName" class="form-control" required placeholder="Enter Ingredient Name">
+          <input type="text" for="ingredientName" class="form-control" required placeholder="Enter Ingredient Name"
+            #nameInput>
         </div>
         <div class="form-group col-sm-4">
           <label for="ingredientAmount">Ingredient Amount</label>
-          <input type="number" for="ingredientAmount" class="form-control" required placeholder="Enter Amount Required">
+          <input type="number" for="ingredientAmount" class="form-control" required placeholder="Enter Amount Required"
+            #amountInput>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4">
-          <button type="submit" class="btn btn-success btn-format">Add Item</button>
+          <button type="submit" class="btn btn-success btn-format" (click)="addIngredient(nameInput)">Add Item</button>
         </div>
         <div class="col-sm-4">
           <button type="reset" class="btn btn-warning btn-format">Reset Fields</button>
