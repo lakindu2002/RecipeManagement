@@ -8,7 +8,7 @@
       <li class="nav-item">
         <a class="nav-link" (click)="navigate('ShoppingListComponent')" style="cursor: pointer;">Shopping List</a>
       </li>
-      <li class="nav-item dropdown">
+      <li [appDropdown]="1" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button">Manage</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Save Data</a>

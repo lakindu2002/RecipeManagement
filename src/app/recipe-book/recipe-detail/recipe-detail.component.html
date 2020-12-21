@@ -6,13 +6,15 @@
         <h5 class="card-title">{{obj.getRecipeName()}}</h5>
         <p class="card-text">{{obj.getRecipeDescription()}}</p>
         <p class="card-text">Recipe Ingredient</p>
-        <button style="width: 100%" class="btn btn-primary dropdown-toggle" type="button">Manage Recipe <span
-            class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Add To Shopping List</a></li>
-          <li><a href="#">Edit Recipe</a></li>
-          <li><a href="#">Remove Recipe</a></li>
-        </ul>
+          <div [appDropdown]="1" class="btn-group">
+            <button style="width: 100%" class="btn btn-primary dropdown-toggle" type="button">Manage Recipe <span
+                class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Add To Shopping List</a></li>
+              <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
+              <li><a class="dropdown-item" href="#">Remove Recipe</a></li>
+            </ul>
+          </div>
       </div>
     </div>
   </div>
