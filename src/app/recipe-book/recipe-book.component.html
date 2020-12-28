@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <app-recipe-list (toDetail)="retrievedRecipeInformation($event)"></app-recipe-list>
+    <app-recipe-list></app-recipe-list>
   </div>
   <div class="col-md-6" *ngIf="theRecipeInformation!== undefined; else goToElse">
     <app-recipe-detail [recipeInformation]="theRecipeInformation"></app-recipe-detail>
