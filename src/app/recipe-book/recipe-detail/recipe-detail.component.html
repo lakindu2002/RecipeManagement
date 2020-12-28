@@ -5,16 +5,20 @@
       <div class="card-body">
         <h5 class="card-title">{{obj.getRecipeName()}}</h5>
         <p class="card-text">{{obj.getRecipeDescription()}}</p>
-        <p class="card-text">Recipe Ingredient</p>
-          <div [appDropdown]="1" class="btn-group">
-            <button style="width: 100%" class="btn btn-primary dropdown-toggle" type="button">Manage Recipe <span
-                class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Add To Shopping List</a></li>
-              <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
-              <li><a class="dropdown-item" href="#">Remove Recipe</a></li>
-            </ul>
-          </div>
+        <div class="card-text">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let ingredient of obj.getIngredients()">{{ingredient.getName()}} - {{ingredient.getAmount()}}</li>
+          </ul>
+        </div>
+        <div [appDropdown]="1" class="btn-group" style="margin-top: 10px;">
+          <button style="width: 100%" class="btn btn-primary dropdown-toggle" type="button">Manage Recipe <span
+              class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item hover"(click)="moveItemsToShoppingList()">Add To Shopping List</a></li>
+            <li><a class="dropdown-item hover" href="#">Edit Recipe</a></li>
+            <li><a class="dropdown-item hover" href="#">Remove Recipe</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
