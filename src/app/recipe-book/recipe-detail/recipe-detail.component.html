@@ -1,23 +1,29 @@
 <div class="row" style="margin-top: 5px;">
-  <div class="col-md-9">
-    <div class="card" style="width: 88%;">
-      <img src={{obj.getImagePath()}} alt="Recipe Image" class="card-img-top imgAlign">
-      <div class="card-body">
+  <div class="col-md-12">
+    <div class="card bg-dark text-white" style="width: 400px;">
+      <img src={{obj.getImagePath()}} alt="Recipe Image" class="card-img">
+      <div class="card-img-overlay">
         <h5 class="card-title">{{obj.getRecipeName()}}</h5>
         <p class="card-text">{{obj.getRecipeDescription()}}</p>
-        <div class="card-text">
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let ingredient of obj.getIngredients()">{{ingredient.getName()}} - {{ingredient.getAmount()}}</li>
+
+        <div>
+          <ul class="list-group" style="color: black;">
+            <li class="list-group-item" *ngFor="let ingredient of obj.getIngredients()">{{ingredient.getName()}} -
+              {{ingredient.getAmount()}}</li>
           </ul>
         </div>
-        <div [appDropdown]="1" class="btn-group" style="margin-top: 10px;">
-          <button style="width: 100%" class="btn btn-primary dropdown-toggle" type="button">Manage Recipe <span
-              class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item hover"(click)="moveItemsToShoppingList()">Add To Shopping List</a></li>
-            <li><a class="dropdown-item hover" >Edit Recipe</a></li>
-            <li><a class="dropdown-item hover" >Remove Recipe</a></li>
-          </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <div [appDropdown]="1" class="btn-group" style="margin-top: 10px; width: 100%;">
+              <button class="btn btn-primary dropdown-toggle" type="button">Manage Recipe <span
+                  class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item hover" (click)="moveItemsToShoppingList()">Add To Shopping List</a></li>
+                <li><a class="dropdown-item hover" (click)="navigate()">Edit Recipe</a></li>
+                <li><a class="dropdown-item hover">Remove Recipe</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,23 @@
-.custom{
+.custom {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.animations {
+  background-color: lightgreen;
+  color: black;
+  transition: background-color 1s, color 1s;
+  border-radius: 5px;
+}
+.animations:hover {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.activeItem {
+  background-color: lightseagreen;
+  color: white;
+}
+
+.decorations {
+  text-decoration: none;
 }

@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-12 custom">
-    <button class="btn btn-success formatWidthBtn">New Recipe</button>
+    <button class="btn btn-success formatWidthBtn" (click)="navigate()">New Recipe</button>
   </div>
 </div>
 <hr>
-<div class="row" *ngFor="let recipe of recipeList">
-  <app-recipe-item [theRecipeInformation]="recipe"></app-recipe-item>
+<div class="row" *ngFor="let recipe of recipeList; let i = index">
+  <app-recipe-item [theRecipeInformation]="recipe" [id]="i"></app-recipe-item>
 </div>

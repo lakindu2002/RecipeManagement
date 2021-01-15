@@ -2,12 +2,7 @@
   <div class="col-md-6">
     <app-recipe-list></app-recipe-list>
   </div>
-  <div class="col-md-6" *ngIf="theRecipeInformation!== undefined; else goToElse">
-    <app-recipe-detail [recipeInformation]="theRecipeInformation"></app-recipe-detail>
+  <div class="col-md-6">
+    <router-outlet></router-outlet>
   </div>
-  <ng-template #goToElse>
-    <div class="col-md-6" style="margin-top: 5px;">
-      <p class="alert alert-danger"><b>Select a Recipe to View</b></p>
-    </div>
-  </ng-template>
 </div>
