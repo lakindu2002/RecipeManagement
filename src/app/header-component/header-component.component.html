@@ -1,18 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand"(click)="navigate('RecipeComponent')" style="cursor: pointer;">Recipe Book</a>
+  <a class="navbar-brand" routerLink="" routerLinkActive="active">Recipe Book</a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" (click)="navigate('RecipeComponent')" style="cursor: pointer;">Recipes</a>
+      <li class="nav-item" routerLinkActive="active">
+        <!-- <a class="nav-link" (click)="navigate('RecipeComponent')" style="cursor: pointer;">Recipes</a> -->
+        <a class="nav-link" routerLink="/recipes">Recipes</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="navigate('ShoppingListComponent')" style="cursor: pointer;">Shopping List</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/shoppingList">Shopping List</a>
+        <!-- <a class="nav-link" (click)="navigate('ShoppingListComponent')" style="cursor: pointer;">Shopping List</a> -->
       </li>
       <li [appDropdown]="1" class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button">Manage</a>
+        <a class="nav-link dropdown-toggle" role="button">Manage</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Save Data</a>
-          <a class="dropdown-item" href="#">Fetch Data</a>
+          <a class="dropdown-item">Save Data</a>
+          <a class="dropdown-item" >Fetch Data</a>
         </div>
       </li>
     </ul>
