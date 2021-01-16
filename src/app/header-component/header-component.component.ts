@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 
 @Component({
   selector: 'app-header-component',
@@ -7,14 +7,9 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponentComponent implements OnInit {
 
-  @Output("loadComponent") emitter = new EventEmitter<string>();
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  navigate(component: string) {
-    this.emitter.emit(component);
-  }
 }

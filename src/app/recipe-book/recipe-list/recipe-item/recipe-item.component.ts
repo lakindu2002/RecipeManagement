@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../../recipe.model';
 import { RecipeService } from '../../services/recipe.service';
@@ -11,7 +11,7 @@ import { RecipeService } from '../../services/recipe.service';
 export class RecipeItemComponent implements OnInit {
 
   @Input("theRecipeInformation") theRecipe: Recipe;
-  @Input("id") index : number;
+  @Input("id") index: number;
 
   constructor(private theRecipeService: RecipeService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
