@@ -19,17 +19,10 @@ export class RecipeService {
 
   private recipeList: Recipe[] = [this.testRecipe, this.secondRecipe];
 
-
-  public theSelectedRecipe = new Subject<Recipe>();
-
   constructor(private theShoppingList: ShoppingListService) { }
 
   getRecipeList() {
     return this.recipeList;
-  }
-
-  getSelectedEvent() {
-    return this.theSelectedRecipe;
   }
 
   passDataToShoppingList(ingrdients: Ingredient[]) {
