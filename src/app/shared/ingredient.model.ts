@@ -13,4 +13,12 @@ export class Ingredient {
   getAmount(): number {
     return this.amount;
   }
+
+  setName(name: string) {
+    this.name = name;
+  }
+
+  setAmount(amount: number) {
+    this.amount = amount;
+  }
 }

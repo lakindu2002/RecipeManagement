@@ -1,7 +1,13 @@
+import { Subject } from "rxjs";
 import { Ingredient } from "src/app/shared/ingredient.model";
 
 export class ShoppingListService {
   private ingredients: Ingredient[] = [];
+  public editTriggered: Subject<number> = new Subject<number>();
+
+  getIngredient(index: number): Ingredient {
+    return this.ingredients[index];
+  }
 
   addIngredient(theIngredient: Ingredient) {
     this.ingredients.push(theIngredient);
@@ -13,5 +19,23 @@ export class ShoppingListService {
 
   updateList(concatArray: Ingredient[]) {
     this.ingredients.push(...concatArray);
+  }
+
+  triggerEdit(index: number) {
+    this.editTriggered.next(index);
+  }
+
+  updateIngredient(editIndex: number, retrievedIngredient: Ingredient) {
+    this.ingredients.forEach((value, index) => {
+      if (index === editIndex) {
+        value.setName(retrievedIngredient.getName());
+        value.setAmount(retrievedIngredient.getAmount());
+        return;
+      }
+    })
+  }
+
+  deleteItem(editIndex: number) {
+    this.ingredients.splice(editIndex, 1);
   }
 }

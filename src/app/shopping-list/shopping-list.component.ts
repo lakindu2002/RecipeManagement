@@ -21,4 +21,7 @@ export class ShoppingListComponent implements OnInit {
     this.ingredients.push(theIngredient);
   }
 
+  editTriggered(index: number) {
+    this.shoppinglistService.triggerEdit(index);
+  }
 }

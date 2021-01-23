@@ -1,28 +1,29 @@
 <hr>
 <div class="row">
   <div class="col-sm-12">
-    <form>
+    <form #theForm="ngForm" (ngSubmit)="addIngredient()">
       <div class="row">
         <div class="form-group col-sm-8">
           <label for="ingredientName">Ingredient Name</label>
-          <input type="text" for="ingredientName" class="form-control" required placeholder="Enter Ingredient Name"
-            #nameInput>
+          <input type="text" for="ingredientName" class="form-control" placeholder="Enter Ingredient Name"
+            name="ingredientName" ngModel required [pattern]="'[a-zA-Z]+'">
         </div>
         <div class="form-group col-sm-4">
           <label for="ingredientAmount">Ingredient Amount</label>
-          <input type="number" for="ingredientAmount" class="form-control" required placeholder="Enter Amount Required"
-            #amountInput>
+          <input type="number" for="ingredientAmount" class="form-control" placeholder="Enter Amount Required" ngModel
+            name="requiredAmount" required [pattern]="'^[1-9][0-9]*$'">
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4">
-          <button type="submit" class="btn btn-success btn-format" (click)="addIngredient(nameInput)">Add Item</button>
+          <button type="submit" class="btn btn-success btn-format" [disabled]="!theForm.valid"
+            [textContent]="isEditing === true ? 'Update Item' : 'Add Item'"></button>
         </div>
         <div class="col-sm-4">
-          <button type="reset" class="btn btn-warning btn-format">Reset Fields</button>
+          <button type="button" class="btn btn-warning btn-format" (click)="resetForm()">Reset Fields</button>
         </div>
-        <div class="col-sm-4">
-          <button type="button" class="btn btn-danger btn-format">Delete Item</button>
+        <div class="col-sm-4" *ngIf="isEditing">
+          <button type="button" class="btn btn-danger btn-format" (click)="deleteItem()">Delete Item</button>
         </div>
       </div>
     </form>
