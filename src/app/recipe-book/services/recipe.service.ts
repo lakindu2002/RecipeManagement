@@ -6,7 +6,6 @@ import { Recipe } from "../recipe.model";
 
 @Injectable()
 export class RecipeService {
-
   private testRecipe: Recipe = new Recipe("Hot & Spicy Pizza",
     "This is my First Recipe",
     "https://joyfoodsunshine.com/wp-content/uploads/2016/09/easy-pizza-casserole-recipe-4-500x500.jpg",
@@ -32,4 +31,27 @@ export class RecipeService {
   getRecipe(index: number): Recipe {
     return this.recipeList[index];
   }
+
+  addRecipe(value: any) {
+    let list: Ingredient[] = [];
+    for (let i of value.ingredients) {
+      list.push(new Ingredient(i.name, i.amount));
+    }
+    const theRecipe: Recipe = new Recipe(value.recipeName, value.recipeDescription, value.imageUrl, list);
+    this.recipeList.push(theRecipe);
+  }
+  updateRecipe(recipeIndex: number, value: any) {
+    let list: Ingredient[] = [];
+    for (let i of value.ingredients) {
+      list.push(new Ingredient(i.name, i.amount));
+    }
+    const theRecipe: Recipe = new Recipe(value.recipeName, value.recipeDescription, value.imageUrl, list);
+
+    this.recipeList[recipeIndex] = theRecipe;
+  }
+
+  deleteRecipe(id: number) {
+    this.recipeList.splice(id, 1);
+  }
+
 }

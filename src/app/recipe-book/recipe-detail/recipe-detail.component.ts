@@ -32,6 +32,11 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['edit'], { relativeTo: this.activatedRoute });
   }
 
+  deleteRecipe(){
+    this.recipeList.deleteRecipe(this.id);
+    this.router.navigate(['recipes']);
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }

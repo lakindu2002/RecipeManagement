@@ -1,7 +1,57 @@
-<div class="row">
+<div class="row ml-3">
   <div class="col-lg-12">
-    <form>
-
+    <form (ngSubmit)="processRecipe()" [formGroup]="theForm">
+      <div class="form-group">
+        <label for="recipeName"><b>Recipe Name</b></label>
+        <input type="text" placeholder="Enter Recipe Name" class="form-control" [formControlName]="'recipeName'">
+      </div>
+      <div class="form-group">
+        <label for="recipeDesciprion"><b>Description</b></label>
+        <textarea col="12" style="resize: none;" class="form-control" placeholder="Enter Recipe Description"
+          [formControlName]="'recipeDescription'"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="imagePath"><b>Image URL</b></label>
+        <input type="text" class="form-control" placeholder="Enter Image URL" [formControlName]="'imageUrl'">
+      </div>
+      <div class="form-group" *ngIf="theForm.get('imageUrl').valid">
+        <label for="imagePreview"><b>Preview</b></label>
+        <img width="100px" height="50px" class="img-thumbnail rounded mx-auto d-block" [src]="theForm.get('imageUrl').value" alt="Image Preview">
+      </div>
+      <div class="form-group">
+        <label for="ingredient"><b>Ingrdients</b></label>
+        <br>
+        <button class="btn btn-info mt-1 mb-2" style="width: 100%;" type="button" (click)="createIngredient()">Add Ingredient</button>
+        <br>
+        <button class="btn btn-danger mt-1 mb-2" style="width: 100%;" type="button" (click)="removeAllIngreidnts()">Remove All Ingredients</button>
+        <div class="col-lg-12" [formArrayName]="'ingredients'">
+          <div class="row mb-2" *ngFor="let eachIngredient of getIngredientControls(); let i = index" [formGroupName]="i">
+            <div class="col-lg-7">
+              <input type="text" placeholder="Ingredient Name" class="form-control" [formControlName]="'name'">
+            </div>
+            <div class="col-lg-3">
+              <input type="text" placeholder="Quantity" class="form-control" [formControlName]="'amount'">
+            </div>
+            <div class="col-lg-2">
+              <button type="button" class="btn btn-danger" style="width: 100%;" (click)="removeItem(i)">X</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-lg-4">
+            <button type="submit" class="btn btn-success" style="width: 100%;"
+              [textContent]="editMode==true ? 'Update Recipe' : 'Create Recipe'" [disabled]="!theForm.valid"></button>
+          </div>
+          <div class="col-lg-4">
+            <button type="click" class="btn btn-danger" style="width: 100%;" (click)="resetForm()">Reset</button>
+          </div>
+          <div class="col-lg-4">
+            <button type="click" class="btn btn-warning" style="width: 100%;" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </div>
