@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-lg-6 col-md-8">
+    <form>
+      <div class="form-group">
+        <label for="email"><b>Email Address</b></label>
+        <input type="email" id="email" class="form-control" placeholder="Email Address">
+      </div>
+      <div class="form-group">
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="password" class="form-control" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <div class="row justify-content-center">
+          <div class="col-xs-12 col-lg-6 col-md-8">
+            <button class="btn btn-primary mb-2" style="width: 100%;" [textContent]="isLogin ? 'Login' : 'Sign Up'"></button>
+          </div>
+          <div class="col-xs-12 col-lg-6 col-md-8">
+            <button class="btn btn-primary" style="width: 100%;" (click)="switchMode()" [textContent]="isLogin ? 'Switch To Sign Up' : 'Switch To Login'"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

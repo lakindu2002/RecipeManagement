@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthComponent } from "./auth/auth.component";
 import { RecipeBookComponent } from "./recipe-book/recipe-book.component";
 import { RecipeDetailComponent } from "./recipe-book/recipe-detail/recipe-detail.component";
 import { RecipeEditComponent } from "./recipe-book/recipe-edit/recipe-edit.component";
@@ -9,6 +10,10 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 
 
 const routes: Routes = [
+  {
+    path: 'auth',
+    component: AuthComponent
+  },
   {
     path: "recipes",
     component: RecipeBookComponent,
@@ -20,12 +25,12 @@ const routes: Routes = [
       {
         path: ':index',
         component: RecipeDetailComponent,
-        resolve:[RecipesResolver]
+        resolve: [RecipesResolver]
       },
       {
         path: ':index/edit',
         component: RecipeEditComponent,
-        resolve:[RecipesResolver]
+        resolve: [RecipesResolver]
       },
       {
         path: '',
@@ -38,12 +43,12 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "/recipes",
+    redirectTo: "/auth",
     pathMatch: "full"
   },
   {
     path: "**",
-    redirectTo: '/recipes',
+    redirectTo: '/auth',
     pathMatch: "full"
   }
 ];
