@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { map } from "rxjs/operators";
 import { Recipe } from "./recipe-book/recipe.model";
 import { RecipeService } from "./recipe-book/services/recipe.service";
 import { Ingredient } from "./shared/ingredient.model";
@@ -20,7 +20,16 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.http.get<Recipe[]>(this.url + "recipes.json");
+    return this.http.get<Recipe[]>(this.url + "recipes.json").pipe(map((data) => {
+      const filtered: Recipe[] = [];
+
+      data.forEach((eachRecipe: Recipe) => {
+        if (!eachRecipe.theIngredients) {
+          eachRecipe.theIngredients = [];
+        }
+      })
+      return data;
+    }));
   }
 
   storeIngredients() {
