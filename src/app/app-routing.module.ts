@@ -4,6 +4,7 @@ import { RecipeBookComponent } from "./recipe-book/recipe-book.component";
 import { RecipeDetailComponent } from "./recipe-book/recipe-detail/recipe-detail.component";
 import { RecipeEditComponent } from "./recipe-book/recipe-edit/recipe-edit.component";
 import { StartRecipeComponent } from "./recipe-book/recipe-list/start-recipe/start-recipe.component";
+import { RecipesResolver } from "./recipe-book/recipe-solver.service";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 
 
@@ -19,10 +20,12 @@ const routes: Routes = [
       {
         path: ':index',
         component: RecipeDetailComponent,
+        resolve:[RecipesResolver]
       },
       {
         path: ':index/edit',
-        component: RecipeEditComponent
+        component: RecipeEditComponent,
+        resolve:[RecipesResolver]
       },
       {
         path: '',
