@@ -1,15 +1,15 @@
 <div class="row" style="margin-top: 5px;">
   <div class="col-md-12">
     <div class="card bg-dark text-white" style="width: 400px;">
-      <img src={{obj.getImagePath()}} alt="Recipe Image" class="card-img">
+      <img src={{obj.imagePath}} alt="Recipe Image" class="card-img">
       <div class="card-img-overlay">
-        <h5 class="card-title">{{obj.getRecipeName()}}</h5>
-        <p class="card-text">{{obj.getRecipeDescription()}}</p>
+        <h5 class="card-title">{{obj.recipeName}}</h5>
+        <p class="card-text">{{obj.recipeDescription}}</p>
 
         <div>
           <ul class="list-group" style="color: black;">
-            <li class="list-group-item" *ngFor="let ingredient of obj.getIngredients()">{{ingredient.getName()}} -
-              {{ingredient.getAmount()}}</li>
+            <li class="list-group-item" *ngFor="let ingredient of obj.theIngredients">{{ingredient.name}} -
+              {{ingredient.amount}}</li>
           </ul>
         </div>
         <div class="row">

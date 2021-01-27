@@ -16,6 +16,9 @@ import { ShoppingListService } from './shopping-list/services/shoppinglist.servi
 import { AppRoutingModule } from './app-routing.module';
 import { StartRecipeComponent } from './recipe-book/recipe-list/start-recipe/start-recipe.component';
 import { RecipeEditComponent } from './recipe-book/recipe-edit/recipe-edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { RecipeEditComponent } from './recipe-book/recipe-edit/recipe-edit.compo
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent]

@@ -28,8 +28,8 @@ export class ShoppingListService {
   updateIngredient(editIndex: number, retrievedIngredient: Ingredient) {
     this.ingredients.forEach((value, index) => {
       if (index === editIndex) {
-        value.setName(retrievedIngredient.getName());
-        value.setAmount(retrievedIngredient.getAmount());
+        value.name = retrievedIngredient.name;
+        value.amount = retrievedIngredient.amount;
         return;
       }
     })

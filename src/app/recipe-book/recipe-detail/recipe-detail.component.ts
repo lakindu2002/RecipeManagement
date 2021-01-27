@@ -25,14 +25,14 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   moveItemsToShoppingList() {
-    this.recipeList.passDataToShoppingList(this.obj.getIngredients());
+    this.recipeList.passDataToShoppingList(this.obj.theIngredients);
   }
 
   navigate() {
     this.router.navigate(['edit'], { relativeTo: this.activatedRoute });
   }
 
-  deleteRecipe(){
+  deleteRecipe() {
     this.recipeList.deleteRecipe(this.id);
     this.router.navigate(['recipes']);
   }

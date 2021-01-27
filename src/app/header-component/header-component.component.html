@@ -13,8 +13,8 @@
       <li [appDropdown]="1" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" role="button">Manage</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item hover">Save Data</a>
-          <a class="dropdown-item hover" >Fetch Data</a>
+          <a class="dropdown-item hover" (click)="saveData()">Save Data</a>
+          <a class="dropdown-item hover" (click)="loadData()">Fetch Data</a>
         </div>
       </li>
     </ul>

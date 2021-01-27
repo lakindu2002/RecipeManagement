@@ -38,16 +38,16 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
           this.editMode = true;
           let ingredientList = new FormArray([]);
 
-          for (let i of this.recipe.getIngredients()) {
+          for (let i of this.recipe.theIngredients) {
             ingredientList.push(new FormGroup({
-              'name': new FormControl(i.getName(), Validators.required),
-              'amount': new FormControl(i.getAmount(), [Validators.required, Validators.pattern("^[1-9][0-9]*$")])
+              'name': new FormControl(i.name, Validators.required),
+              'amount': new FormControl(i.amount, [Validators.required, Validators.pattern("^[1-9][0-9]*$")])
             }));
           }
           this.theForm = new FormGroup({
-            'recipeName': new FormControl(this.recipe.getRecipeName().trim(), [Validators.required]),
-            'recipeDescription': new FormControl(this.recipe.getRecipeDescription(), [Validators.required]),
-            'imageUrl': new FormControl(this.recipe.getImagePath(), Validators.required),
+            'recipeName': new FormControl(this.recipe.recipeName.trim(), [Validators.required]),
+            'recipeDescription': new FormControl(this.recipe.recipeDescription, [Validators.required]),
+            'imageUrl': new FormControl(this.recipe.imagePath, Validators.required),
             'ingredients': ingredientList,
           });
         }

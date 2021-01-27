@@ -2,11 +2,11 @@
   <div class="col-md-12 mb-4 animations">
     <div class="row" style="padding: 10px;">
       <div class="col-md-6">
-        <h4 class="list-group-item-heading">{{theRecipe.getRecipeName()}}</h4>
-        <p class="list-group-item-text">{{theRecipe.getRecipeDescription()}}</p>
+        <h4 class="list-group-item-heading">{{theRecipe.recipeName}}</h4>
+        <p class="list-group-item-text">{{theRecipe.recipeDescription}}</p>
       </div>
       <div class="col-md-6">
-        <img [src]="theRecipe.getImagePath()" alt="image" width="30%" style="float: right; border-radius: 5px;"
+        <img [src]="theRecipe.imagePath" alt="image" width="30%" style="float: right; border-radius: 5px;"
           class="img-responsive maxwidth">
       </div>
     </div>

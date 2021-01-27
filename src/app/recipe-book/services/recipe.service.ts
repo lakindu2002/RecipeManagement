@@ -6,18 +6,19 @@ import { Recipe } from "../recipe.model";
 
 @Injectable()
 export class RecipeService {
-  private testRecipe: Recipe = new Recipe("Hot & Spicy Pizza",
-    "This is my First Recipe",
-    "https://joyfoodsunshine.com/wp-content/uploads/2016/09/easy-pizza-casserole-recipe-4-500x500.jpg",
-    [new Ingredient("Flour", 250), new Ingredient("Peporoni", 300)]);
+  // private testRecipe: Recipe = new Recipe("Hot & Spicy Pizza",
+  //   "This is my First Recipe",
+  //   "https://joyfoodsunshine.com/wp-content/uploads/2016/09/easy-pizza-casserole-recipe-4-500x500.jpg",
+  //   [new Ingredient("Flour", 250), new Ingredient("Peporoni", 300)]);
 
-  private secondRecipe: Recipe = new Recipe("My Second Recipe",
-    "This is the Second Recipe",
-    "https://i2.wp.com/www.camerastupid.com/wp-content/uploads/2014/06/Screen-Shot-2014-06-03-at-10.54.02-AM.png?fit=571%2C854",
-    [new Ingredient("Flour", 250), new Ingredient("Butter", 300)]);
+  // private secondRecipe: Recipe = new Recipe("My Second Recipe",
+  //   "This is the Second Recipe",
+  //   "https://i2.wp.com/www.camerastupid.com/wp-content/uploads/2014/06/Screen-Shot-2014-06-03-at-10.54.02-AM.png?fit=571%2C854",
+  //   [new Ingredient("Flour", 250), new Ingredient("Butter", 300)]);
 
-  private recipeList: Recipe[] = [this.testRecipe, this.secondRecipe];
+  private recipeList: Recipe[] = [];
 
+  public recipeListChanged: Subject<any> = new Subject();
   constructor(private theShoppingList: ShoppingListService) { }
 
   getRecipeList() {
@@ -54,4 +55,8 @@ export class RecipeService {
     this.recipeList.splice(id, 1);
   }
 
+  setRecipes(data: Recipe[]) {
+    this.recipeList = data;
+    this.recipeListChanged.next(this.recipeList);
+  }
 }
