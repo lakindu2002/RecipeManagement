@@ -4,6 +4,7 @@ import { Ingredient } from "src/app/shared/ingredient.model";
 export class ShoppingListService {
   private ingredients: Ingredient[] = [];
   public editTriggered: Subject<number> = new Subject<number>();
+  public ingredientRecieved: Subject<Ingredient[]> = new Subject();
 
   getIngredient(index: number): Ingredient {
     return this.ingredients[index];
@@ -37,5 +38,10 @@ export class ShoppingListService {
 
   deleteItem(editIndex: number) {
     this.ingredients.splice(editIndex, 1);
+  }
+
+  setList(data: Ingredient[]) {
+    this.ingredients = data;
+    this.ingredientRecieved.next(this.ingredients);
   }
 }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subscription } from 'rxjs';
 import { AuthService } from './auth.service';
 import { User } from './user.model';
 
@@ -9,20 +11,27 @@ import { User } from './user.model';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
 
   isLogin: boolean = true;
   isError: boolean = false;
   errorMessage: string = "";
+  sub: Subscription
 
   theForm: FormGroup;
 
-  constructor(private spinner: NgxSpinnerService, private authService: AuthService) { }
+  constructor(private spinner: NgxSpinnerService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.theForm = new FormGroup({
       'emailAddress': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    })
+
+    this.sub = this.authService.userInfo.subscribe((loggedInUser) => {
+      if (loggedInUser !== null) {
+        this.router.navigate(['recipes']);
+      }
     })
   }
 
@@ -43,7 +52,7 @@ export class AuthComponent implements OnInit {
 
       if (this.isLogin) {
         this.authService.login(emailAddress, password).subscribe((user) => {
-          const tokenExpirationDate = new Date(new Date().getTime() + Number(user.expiresIn));
+          const tokenExpirationDate = new Date(new Date().getTime() + (+user.expiresIn * 1000));
           const loggedInUser: User = new User(emailAddress, user.localId, user.idToken, tokenExpirationDate);
           this.authService.userInfo.next(loggedInUser);
 
@@ -56,7 +65,7 @@ export class AuthComponent implements OnInit {
 
       } else {
         this.authService.signUp(emailAddress, password).subscribe((user) => {
-          const tokenExpirationDate = new Date(new Date().getTime() + Number(user.expiresIn));
+          const tokenExpirationDate = new Date(new Date().getTime() + (+user.expiresIn * 1000));
           const loggedInUser: User = new User(emailAddress, user.localId, user.idToken, tokenExpirationDate);
           this.authService.userInfo.next(loggedInUser);
 
@@ -73,6 +82,9 @@ export class AuthComponent implements OnInit {
         })
       }
     }
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

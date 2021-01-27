@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, tap } from "rxjs/operators";
+import { AuthService } from "./auth/auth.service";
 import { Recipe } from "./recipe-book/recipe.model";
 import { RecipeService } from "./recipe-book/services/recipe.service";
 import { Ingredient } from "./shared/ingredient.model";
@@ -29,7 +30,7 @@ export class DataStorageService {
         }
       })
       return data;
-    }), tap((data)=>{
+    }), tap((data) => {
       this.recipeService.setRecipes(data);
     }));
   }
@@ -40,6 +41,6 @@ export class DataStorageService {
   }
 
   fetchIngredients() {
-    return this.http.get<Ingredient[]>(this.url + "ingrdients.json");
+    return this.http.get<Ingredient[]>(this.url + "ingriedients.json");
   }
 }

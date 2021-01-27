@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Subject, throwError } from "rxjs";
+import { BehaviorSubject, Subject, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { User } from "./user.model";
 
@@ -20,7 +20,8 @@ export interface FirebaseUser {
 })
 export class AuthService {
 
-  userInfo: Subject<User> = new Subject<User>();
+  userInfo: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+
 
   private key: string = "AIzaSyBmZF3hDLS3GaiR9rHUKUjRBjXsQkmTWVY";
   private signupUrl: string = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + this.key;

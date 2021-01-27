@@ -16,10 +16,11 @@ import { ShoppingListService } from './shopping-list/services/shoppinglist.servi
 import { AppRoutingModule } from './app-routing.module';
 import { StartRecipeComponent } from './recipe-book/recipe-list/start-recipe/start-recipe.component';
 import { RecipeEditComponent } from './recipe-book/recipe-edit/recipe-edit.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './auth/auth.component';
+import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { AuthComponent } from './auth/auth.component';
     NgxSpinnerModule,
     BrowserAnimationsModule
   ],
-  providers: [RecipeService, ShoppingListService],
+  providers: [RecipeService, ShoppingListService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

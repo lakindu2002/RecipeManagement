@@ -1,23 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <div class="container">
-      <a class="navbar-brand" routerLink="/recipes" routerLinkActive="active">Recipe Book</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/recipes">Recipes</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/shoppingList">Shopping List</a>
-          </li>
+    <a class="navbar-brand" routerLink="/recipes" routerLinkActive="active">Recipe Book</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/recipes">Recipes</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/shoppingList">Shopping List</a>
+        </li>
 
-          <li [appDropdown]="1" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button">Manage</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item hover" (click)="saveData()">Save Data</a>
-              <a class="dropdown-item hover" (click)="loadData()">Fetch Data</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+        <li [appDropdown]="1" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button">Manage</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item hover" (click)="saveData()">Save Data</a>
+            <a class="dropdown-item hover" (click)="loadData()">Fetch Data</a>
+            <a class="dropdown-item hover">Logout</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
