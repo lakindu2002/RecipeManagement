@@ -38,6 +38,9 @@ export class HeaderComponentComponent implements OnInit {
     this.dataService.fetchRecipes().subscribe((data) => {
       this.recipeList.setRecipes(data);
       this.spinner.hide();
+    }, (error) => {
+      console.log(error);
+      this.spinner.hide();
     })
   }
 
