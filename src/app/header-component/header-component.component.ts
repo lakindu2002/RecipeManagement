@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subject, Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -16,18 +17,21 @@ export class HeaderComponentComponent implements OnInit, OnDestroy {
 
   sub: Subscription;
   isLoggedIn: boolean = false;
-  constructor(private spinner: NgxSpinnerService, private auth: AuthService, private dataService: DataStorageService, private shoppinglist: ShoppingListService, private recipeList: RecipeService) { }
+  constructor(private spinner: NgxSpinnerService, private router: Router, private auth: AuthService, private dataService: DataStorageService, private shoppinglist: ShoppingListService, private recipeList: RecipeService) { }
 
   ngOnInit(): void {
     this.sub = this.auth.userInfo.subscribe((userData) => {
       if (!(userData === null || userData === undefined)) {
         this.isLoggedIn = true;
       }
+      else {
+        this.isLoggedIn = false;
+      }
     })
+
   }
 
   saveData() {
-    console.log("here")
     this.spinner.show();
     this.dataService.storeIngredients().subscribe((data) => {
       this.dataService.storeRecipes().subscribe((data) => {
@@ -58,6 +62,10 @@ export class HeaderComponentComponent implements OnInit, OnDestroy {
       console.log(error);
       this.spinner.hide();
     })
+  }
+  logout() {
+    this.auth.logout();
+    this.isLoggedIn = false;
   }
 
   ngOnDestroy(): void {

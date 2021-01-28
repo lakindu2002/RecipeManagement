@@ -32,7 +32,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       if (loggedInUser !== null) {
         this.router.navigate(['recipes']);
       }
-    })
+    });
   }
 
   switchMode() {
@@ -55,6 +55,8 @@ export class AuthComponent implements OnInit, OnDestroy {
           const tokenExpirationDate = new Date(new Date().getTime() + (+user.expiresIn * 1000));
           const loggedInUser: User = new User(emailAddress, user.localId, user.idToken, tokenExpirationDate);
           this.authService.userInfo.next(loggedInUser);
+          this.authService.autoLogout(+user.expiresIn * 1000);
+          localStorage.setItem('user', JSON.stringify(loggedInUser));
 
           this.spinner.hide();
         }, (error) => {
