@@ -29,11 +29,14 @@
           </div>
         </div>
       </div>
-      <div class="form-group" *ngIf="isError">
+      <!-- <div *ngIf="isError">
+        <app-alert [errorMessage]="errorMessage"></app-alert>
         <div class="alert alert-danger">
           {{errorMessage}}
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
+      <ng-template retrieveRef>
+      </ng-template>
     </form>
   </div>
 </div>

@@ -1,8 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
+import { AlertComponent } from '../shared/alert/alert.component';
+import { PublicDirective } from '../shared/public-directive';
 import { AuthService } from './auth.service';
 import { User } from './user.model';
 
@@ -17,10 +19,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   isError: boolean = false;
   errorMessage: string = "";
   sub: Subscription
+  subscription : Subscription;
 
   theForm: FormGroup;
+  @ViewChild(PublicDirective, { static: false }) theRef: PublicDirective
 
-  constructor(private spinner: NgxSpinnerService, private authService: AuthService, private router: Router) { }
+  constructor(private spinner: NgxSpinnerService, private authService: AuthService, private router: Router, private resolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
     this.theForm = new FormGroup({
@@ -62,6 +66,8 @@ export class AuthComponent implements OnInit, OnDestroy {
         }, (error) => {
           this.isError = true;
           this.errorMessage = error;
+          this.retrieveError(this.errorMessage);
+
           this.spinner.hide();
         })
 
@@ -76,16 +82,38 @@ export class AuthComponent implements OnInit, OnDestroy {
           if (error.error.error.message === "EMAIL_EXISTS") {
             this.isError = true;
             this.errorMessage = "Email Address is already Registered"
+            this.retrieveError(this.errorMessage);
           } else {
             this.isError = true;
             this.errorMessage = "Error Encountered";
+            this.retrieveError(this.errorMessage);
+
           }
           this.spinner.hide();
         })
       }
     }
   }
+
+  handleClose() {
+    this.isError = false;
+  }
+
+  retrieveError(errorMessage) {
+    const alertFactory = this.resolver.resolveComponentFactory(AlertComponent);
+    const containerRef: ViewContainerRef = this.theRef.ref;
+    containerRef.clear();
+    const ref = containerRef.createComponent(alertFactory);
+    ref.instance.message = errorMessage;
+    this.subscription = ref.instance.closer.subscribe(() => {
+      containerRef.clear();
+    })
+
+
+  }
+
   ngOnDestroy() {
+    this.subscription.unsubscribe();
     this.sub.unsubscribe();
   }
 

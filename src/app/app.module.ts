@@ -21,6 +21,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './auth/auth-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
+import { PublicDirective } from './shared/public-directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,10 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
     DropdownDirective,
     StartRecipeComponent,
     RecipeEditComponent,
-    AuthComponent
+    AuthComponent,
+    AlertComponent,
+    PublicDirective
+
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,7 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [RecipeService, ShoppingListService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
