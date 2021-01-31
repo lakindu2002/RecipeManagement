@@ -17,14 +17,13 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { PublicDirective } from './shared/public-directive';
 import { RecipeModule } from './recipe-book/recipe.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponentComponent,
     AuthComponent,
-    AlertComponent,
-    PublicDirective
+    HeaderComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +33,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     RecipeModule,
-    ShoppingListModule
+    ShoppingListModule,
+    SharedModule
   ],
   providers: [RecipeService, ShoppingListService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
