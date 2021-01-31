@@ -26,6 +26,7 @@ export class RecipeService {
   }
 
   passDataToShoppingList(ingrdients: Ingredient[]) {
+    console.log(ingrdients)
     this.theShoppingList.updateList(ingrdients);
   }
 

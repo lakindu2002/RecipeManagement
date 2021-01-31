@@ -2,7 +2,7 @@ import { Subject } from "rxjs";
 import { Ingredient } from "src/app/shared/ingredient.model";
 
 export class ShoppingListService {
-  private ingredients: Ingredient[] = [];
+  ingredients: Ingredient[] = [];
   public editTriggered: Subject<number> = new Subject<number>();
   public ingredientRecieved: Subject<Ingredient[]> = new Subject();
 
@@ -19,6 +19,9 @@ export class ShoppingListService {
   }
 
   updateList(concatArray: Ingredient[]) {
+    if(this.ingredients===null){
+      this.ingredients = [];
+    }
     this.ingredients.push(...concatArray);
   }
 
