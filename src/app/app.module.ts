@@ -23,20 +23,15 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './auth/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PublicDirective } from './shared/public-directive';
+import { RecipeModule } from './recipe-book/recipe.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShoppingListComponent,
-    RecipeBookComponent,
     HeaderComponentComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
     ShoppingListEditComponent,
-    DropdownDirective,
     StartRecipeComponent,
-    RecipeEditComponent,
     AuthComponent,
     AlertComponent,
     PublicDirective
@@ -50,6 +45,7 @@ import { PublicDirective } from './shared/public-directive';
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
+    RecipeModule
   ],
   providers: [RecipeService, ShoppingListService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

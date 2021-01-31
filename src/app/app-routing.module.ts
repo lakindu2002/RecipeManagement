@@ -15,30 +15,7 @@ const routes: Routes = [
     path: 'auth',
     component: AuthComponent
   },
-  {
-    path: "recipes",
-    component: RecipeBookComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'create',
-        component: RecipeEditComponent
-      },
-      {
-        path: ':index',
-        component: RecipeDetailComponent,
-        resolve: [RecipesResolver]
-      },
-      {
-        path: ':index/edit',
-        component: RecipeEditComponent,
-        resolve: [RecipesResolver]
-      },
-      {
-        path: '',
-        component: StartRecipeComponent
-      },]
-  },
+
   {
     path: "shoppingList",
     component: ShoppingListComponent,
@@ -49,11 +26,11 @@ const routes: Routes = [
     redirectTo: "/auth",
     pathMatch: "full"
   },
-  {
-    path: "**",
-    redirectTo: '/auth',
-    pathMatch: "full"
-  }
+  // {
+  //   path: "**",
+  //   redirectTo: '/auth',
+  //   pathMatch: "full"
+  // }
 ];
 
 

@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   isError: boolean = false;
   errorMessage: string = "";
   sub: Subscription
-  subscription : Subscription;
+  subscription: Subscription;
 
   theForm: FormGroup;
   @ViewChild(PublicDirective, { static: false }) theRef: PublicDirective
@@ -113,8 +113,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.sub.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }
