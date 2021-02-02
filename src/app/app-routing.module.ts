@@ -9,6 +9,14 @@ const routes: Routes = [
     component: AuthComponent
   },
   {
+    path: 'recipes',
+    loadChildren: () => import("./recipe-book/recipe.module").then((m) => m.RecipeModule),
+  },
+  {
+    path: 'shoppingList',
+    loadChildren: () => import("./shopping-list/shopping-list.module").then((m) => m.ShoppingListModule)
+  },
+  {
     path: "",
     redirectTo: "/auth",
     pathMatch: "full"
