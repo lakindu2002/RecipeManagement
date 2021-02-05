@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, tap } from "rxjs/operators";
-import { AuthService } from "./auth/auth.service";
 import { Recipe } from "./recipe-book/recipe.model";
 import { RecipeService } from "./recipe-book/services/recipe.service";
 import { Ingredient } from "./shared/ingredient.model";
