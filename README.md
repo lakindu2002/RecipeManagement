@@ -1,6 +1,7 @@
 # RecipeBook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+
 Hosted On - https://recipe-book-536b4.web.app/auth
 
 ## Development server
