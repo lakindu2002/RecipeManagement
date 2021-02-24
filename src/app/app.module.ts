@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import { AuthModule } from './auth/auth.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-    AuthModule
+    AuthModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
